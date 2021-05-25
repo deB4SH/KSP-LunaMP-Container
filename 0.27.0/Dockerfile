@@ -5,10 +5,10 @@ ARG LMP_FILENAME=LunaMultiplayer-Debug.zip
 
 ARG LMP_URL=https://github.com/LunaMultiplayer/LunaMultiplayer/releases/download/$LMP_VERSION/$LMP_FILENAME
 
-RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing && \
-    wget $LMP_URL && \
-    unzip $LMP_FILENAME && \
-    rm -rf $LMP_FILENAME LMPClient LMP\ Readme.txt
+RUN apk add --no-cache mono --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing
+RUN wget $LMP_URL
+RUN unzip $LMP_FILENAME
+RUN rm -rf $LMP_FILENAME LMPClient LMP\ Readme.txt
 
 WORKDIR LMPServer
 
