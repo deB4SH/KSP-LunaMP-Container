@@ -1,18 +1,13 @@
 FROM alpine:3.13.5
 
-ARG LMP_VERSION=0.27.0
-ARG LMP_FILENAME=LunaMultiplayer-Debug.zip
-
-ARG LMP_URL=https://github.com/LunaMultiplayer/LunaMultiplayer/releases/download/$LMP_VERSION/$LMP_FILENAME
-
 RUN apk add --no-cache mono curl --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing
 RUN apk add unzip
-RUN curl -o /LunaMultiplayer.zip $LMP_URL
-RUN mkdir LMP
-RUN ls -al ./
-RUN unzip /LunaMultiplayer.zip -d LMP
 
-WORKDIR LMP
+RUN curl -O --output-dir / https://github.com/LunaMultiplayer/LunaMultiplayer/releases/download/0.27.0/LunaMultiplayer-Debug.zip
+RUN ls -al ./
+RUN unzip /LunaMultiplayer-Debug.zip
+
+WORKDIR LMPServer
 
 RUN ls -al ./
 
