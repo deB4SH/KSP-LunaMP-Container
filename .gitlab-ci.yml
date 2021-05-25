@@ -1,19 +1,23 @@
+image: docker:19.03.13
+
+variables:
+  DOCKER_DRIVER: overlay
+  DOCKER_HOST: tcp://localhost:2375/
+
+services:
+  - docker:19.03.13-dind
+
+before_script:
+  - docker info
+
 stages:
   - build
 
-
-build-dind-jdk11:
+build-0.27.0:
   stage: build
   image: jdrouet/docker-with-buildx:stable
   tags:
     - homelab
-  services:
-    - docker:18.09.7-dind
-  variables:
-    DOCKER_DRIVER: overlay
-    DOCKER_HOST: tcp://localhost:2375/
-  before_script:
-    - docker info
   script:
     - docker buildx create --use
     - cd jdk13
