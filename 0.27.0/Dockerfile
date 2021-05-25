@@ -9,7 +9,7 @@ RUN apk add --no-cache mono curl --repository http://dl-cdn.alpinelinux.org/alpi
 RUN apk add unzip
 RUN curl -o ./$LMP_FILENAME $LMP_URL
 RUN ls -al ./
-RUN unzip $LMP_FILENAME
+RUN unzip ./$LMP_FILENAME
 RUN rm -rf $LMP_FILENAME LMPClient LMP\ Readme.txt
 
 WORKDIR LMPServer
