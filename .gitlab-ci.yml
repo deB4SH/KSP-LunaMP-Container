@@ -24,6 +24,7 @@ build-0.27.0:
     - docker context create homelab
     - cd 0.27.0
     - docker buildx create homelab --use
-    - docker buildx build --platform linux/amd64,linux/arm64 --tag lab.0x09.de:61000/homelab/ksp-luna:0.27.0 .
+    - docker login lab.0x09.de:61000 -u $CIUSER -p $CITOKEN
+    - docker buildx build --platform linux/amd64,linux/arm64 --tag lab.0x09.de:61000/homelab/ksp-luna:0.27.0 --push .
   only:
     - master
