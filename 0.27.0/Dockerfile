@@ -9,10 +9,12 @@ RUN apk add --no-cache mono curl --repository http://dl-cdn.alpinelinux.org/alpi
 RUN apk add unzip
 RUN curl -o ./$LMP_FILENAME $LMP_URL
 RUN ls -al ./
-RUN unzip ./$LMP_FILENAME
-RUN rm -rf $LMP_FILENAME LMPClient LMP\ Readme.txt
+RUN mkdir LMP
+RUN unzip ./$LMP_FILENAME -D LMP
 
-WORKDIR LMPServer
+WORKDIR LMP
+
+RUN ls -al ./
 
 EXPOSE 8800/udp
 EXPOSE 8900/tcp
