@@ -23,7 +23,7 @@ build-0.27.0:
   script:
     - docker context create homelab
     - cd 0.27.0
-    - docker buildx create homelab
+    - docker buildx create homelab --use
     - docker buildx build --platform linux/amd64,linux/arm64 --tag lab.0x09.de:61000/homelab/ksp-luna:0.27.0 .
   only:
     - master
