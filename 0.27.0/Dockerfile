@@ -7,10 +7,10 @@ ARG LMP_URL=https://github.com/LunaMultiplayer/LunaMultiplayer/releases/download
 
 RUN apk add --no-cache mono curl --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing
 RUN apk add unzip
-RUN curl -o ./$LMP_FILENAME $LMP_URL
-RUN ls -al ./
+RUN curl -o /LunaMultiplayer.zip $LMP_URL
 RUN mkdir LMP
-RUN unzip ./$LMP_FILENAME -D LMP
+RUN ls -al ./
+RUN unzip /LunaMultiplayer.zip -d LMP
 
 WORKDIR LMP
 
